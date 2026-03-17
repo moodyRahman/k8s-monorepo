@@ -73,7 +73,7 @@ metadata:
   name: grafana-config
   namespace: o11y
 data:
-  gafana.ini: |
+  grafana.ini: |
     [date_formats]
     full_date = MMM Do, YYYY @ hh:mm:ss a
     interval_second = hh:mm:ss a
@@ -84,7 +84,7 @@ data:
     interval_year = YYYY
 
     [server]
-    domain = giorno-grafana.tail5b1a8.ts.net
+    domain = grafana.k8s.moody
     ; root_url = %(protocol)s://%(domain)s:/grafana/
     serve_from_sub_path = true
 
