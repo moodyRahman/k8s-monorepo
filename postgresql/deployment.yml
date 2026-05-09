@@ -31,8 +31,11 @@ spec:
           readinessProbe:
             exec:
               command:
-              - pg_isready
-            initialDelaySeconds: 5
+                - pg_isready
+                - -U
+                - moody
+                - -d
+                - cluster
             periodSeconds: 10
           resources:
             requests:

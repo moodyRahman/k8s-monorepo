@@ -10,7 +10,7 @@ metadata:
   name: grafana
   namespace: o11y
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: grafana
