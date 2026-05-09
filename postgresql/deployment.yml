@@ -19,14 +19,16 @@ spec:
           env: 
           - name: POSTGRES_PASSWORD
             value: moody
+          - name: POSTGRES_DB
+            value: cluster
+          - name: POSTGRES_USER
+            value: moody
           ports:
             - containerPort: 5432
           readinessProbe:
             exec:
               command:
               - pg_isready
-              - -U
-              - root
             initialDelaySeconds: 5
             periodSeconds: 10
           resources:
