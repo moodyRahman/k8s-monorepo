@@ -16,6 +16,9 @@ spec:
       containers:
         - name: postgres
           image: postgres:18-trixie
+          env: 
+          - name: POSTGRES_PASSWORD
+            value: moody
           ports:
             - containerPort: 5432
           readinessProbe:
