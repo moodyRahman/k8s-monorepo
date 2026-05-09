@@ -25,6 +25,8 @@ spec:
             exec:
               command:
               - pg_isready
+              - -U
+              - root
             initialDelaySeconds: 5
             periodSeconds: 10
           resources:
