@@ -37,6 +37,10 @@ spec:
             exec:
               command:
                 - pg_isready
+                - -U
+                - moody
+                - -d
+                - cluster
             periodSeconds: 10
           resources:
             requests:
