@@ -103,7 +103,3 @@ data:
     from_name = Grafana
     skip_verify = false
     startTLS_policy = OpportunisticStartTLS
-
-    # [database]
-    # type = postgres
-    # host = postgresql.data.svc.cluster.local
