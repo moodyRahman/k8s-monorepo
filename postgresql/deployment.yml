@@ -36,12 +36,11 @@ spec:
           readinessProbe:
             exec:
               command:
+                - sh
+                - -c
                 - pg_isready
-                - -U
-                - moody
-                - -d
-                - cluster
             periodSeconds: 10
+            initialDelaySeconds: 5
           resources:
             requests:
               memory: "256Mi"
