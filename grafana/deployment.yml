@@ -104,6 +104,6 @@ data:
     skip_verify = false
     startTLS_policy = OpportunisticStartTLS
 
-    [database]
-    type = postgres
-    host = postgresql.data.svc.cluster.local
+    # [database]
+    # type = postgres
+    # host = postgresql.data.svc.cluster.local
