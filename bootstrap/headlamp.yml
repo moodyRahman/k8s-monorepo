@@ -5,16 +5,21 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://kubernetes-sigs.github.io/headlamp/
-    chart: headlamp
-    targetRevision: "*"
-    helm:
-      releaseName: headlamp
-      values: |
-        serviceAccount:
-          create: false
-          name: headlamp-admin
+  sources:
+    - repoURL: https://github.com/moodyRahman/k8s-monorepo/
+      path: ./bootstrap
+      targetRevision: HEAD
+      directory:
+        recurse: true
+    - repoURL: https://kubernetes-sigs.github.io/headlamp/
+      chart: headlamp
+      targetRevision: "*"
+      helm:
+        releaseName: headlamp
+        values: |
+          serviceAccount:
+            create: false
+            name: headlamp-admin
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
