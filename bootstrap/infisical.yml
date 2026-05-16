@@ -11,8 +11,6 @@ spec:
       targetRevision: "*"
       helm:
         releaseName: eso
-        values: |
-          installCRDs: true
     - repoURL: https://github.com/moodyRahman/k8s-monorepo/
       path: ./infisical
       targetRevision: HEAD
