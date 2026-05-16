@@ -13,8 +13,6 @@ spec:
         releaseName: eso
         values: |
           installCRDs: true
-          webhook:
-            port: 10250
     - repoURL: https://github.com/moodyRahman/k8s-monorepo/
       path: ./infisical
       targetRevision: HEAD
