@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/moodyRahman/k8s-monorepo/
+    - repoURL: https://github.com/moodyRahman/k8s-monorepo
       path: ./headlamp
       targetRevision: HEAD
       directory:

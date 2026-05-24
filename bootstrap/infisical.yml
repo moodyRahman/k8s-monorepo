@@ -11,7 +11,7 @@ spec:
       targetRevision: "*"
       helm:
         releaseName: eso
-    - repoURL: https://github.com/moodyRahman/k8s-monorepo/
+    - repoURL: https://github.com/moodyRahman/k8s-monorepo
       path: ./infisical
       targetRevision: HEAD
       directory:
