@@ -14,11 +14,13 @@ spec:
           nfs:
             server: nfs
             path: /srv/nfs/shared
-    - repoURL: https://github.com/moodyRahman/k8s-monorepo
-      path: nfs-subdir
-      targetRevision: HEAD
-      directory:
-        recurse: true
+          storageClass:
+            defaultClass=true
+    # - repoURL: https://github.com/moodyRahman/k8s-monorepo
+    #   path: nfs-subdir
+    #   targetRevision: HEAD
+    #   directory:
+    #     recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: default
