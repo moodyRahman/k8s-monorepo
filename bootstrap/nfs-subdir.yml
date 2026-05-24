@@ -5,15 +5,20 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
-    chart: nfs-subdir-external-provisioner
-    targetRevision: "*"   # pin to a specific version e.g. "4.0.18"
-    helm:
-      values: |
-        nfs:
-          server: nfs
-          path: /srv/nfs/shared
+  sources:
+    - repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+      chart: nfs-subdir-external-provisioner
+      targetRevision: "*"   # pin to a specific version e.g. "4.0.18"
+      helm:
+        values: |
+          nfs:
+            server: nfs
+            path: /srv/nfs/shared
+    - repoURL: https://github.com/moodyRahman/k8s-monorepo
+      path: nfs-subdir
+      targetRevision: HEAD
+      directory:
+        recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: default
