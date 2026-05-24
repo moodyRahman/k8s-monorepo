@@ -7,7 +7,7 @@ spec:
   project: default
   sources:
     - repoURL: https://github.com/moodyRahman/k8s-monorepo
-      path: ./headlamp
+      path: headlamp
       targetRevision: HEAD
       directory:
         recurse: true
