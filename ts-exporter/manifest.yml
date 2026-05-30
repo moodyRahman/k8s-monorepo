@@ -14,7 +14,6 @@ spec:
 
   target:
     name: ts-auth-keys
-    namespace: ts-exporter
 
   data:
     - secretKey: ts-auth
