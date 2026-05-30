@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ts-exporter
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/moodyRahman/k8s-monorepo
+      path: ./ts-exporter
+      targetRevision: HEAD
+      directory:
+        recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ts-exporter
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - Replace=true
