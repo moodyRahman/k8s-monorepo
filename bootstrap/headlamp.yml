@@ -20,6 +20,8 @@ spec:
           serviceAccount:
             create: false
             name: headlamp-admin
+          clusterRoleBinding:
+            create: false
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
