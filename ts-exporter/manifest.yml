@@ -23,6 +23,13 @@ spec:
         key: ts-auth
         metadataPolicy: None	
         nullBytePolicy: Ignore
+    - secretKey: ts-net-id
+      remoteRef:
+        conversionStrategy: Default	
+        decodingStrategy: None
+        key: ts-net-id
+        metadataPolicy: None	
+        nullBytePolicy: Ignore
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -40,6 +47,17 @@ spec:
       containers:
       - name: ts-exporter
         image: bucciarati.tail5b1a8.ts.net/ts-exporter:main
+        env:
+          - name: TS_ACCESSKEY
+            valueFrom: 
+              secretKeyRef:
+                name: ts-auth-keys
+                key: ts-auth
+          - name: TS_NET
+            valueFrom: 
+              secretKeyRef:
+                name: ts-auth-keys
+                key: ts-net-id
         resources:
           limits:
             memory: "128Mi"
