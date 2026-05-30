@@ -2,3 +2,21 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: ts-exporter
+---
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: ts-exporter-secrets
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: infisical
+
+  target:
+    name: ts-auth-keys
+    namespace: ts-exporter
+
+  data:
+    - secretKey: ts-auth
+      remoteRef:
+        key: ts-auth
