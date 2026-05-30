@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
       - name: ts-exporter
-        image: bucciarati.tail5b1a8.ts.net/ts-exporter
+        image: bucciarati.tail5b1a8.ts.net/ts-exporter:main
         resources:
           limits:
             memory: "128Mi"
