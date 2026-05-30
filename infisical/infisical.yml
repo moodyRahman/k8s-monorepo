@@ -17,3 +17,22 @@ spec:
       name: infisical
       namespace: default
 ---
+apiVersion: external-secrets.io/v1
+kind: SecretStore
+metadata:
+  name: infisical
+spec:
+  provider:
+    infisical:
+      hostAPI: https://diavolo.tail5b1a8.ts.net
+      auth:
+        universalAuthCredentials:
+          clientId:
+            name: infisical
+            key: client_id
+          clientSecret:
+            name: infisical
+            key: client_secret
+      secretsScope:
+        projectSlug: cluster
+        environmentSlug: dev
