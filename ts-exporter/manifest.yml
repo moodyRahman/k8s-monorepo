@@ -18,4 +18,8 @@ spec:
   data:
     - secretKey: ts-auth
       remoteRef:
+        conversionStrategy: Default	
+        decodingStrategy: None
         key: ts-auth
+        metadataPolicy: None	
+        nullBytePolicy: Ignore
