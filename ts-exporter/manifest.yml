@@ -23,3 +23,29 @@ spec:
         key: ts-auth
         metadataPolicy: None	
         nullBytePolicy: Ignore
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-exporter
+spec:
+  selector:
+    matchLabels:
+      app: ts-exporter
+  template:
+    metadata:
+      labels:
+        app: ts-exporter
+    spec:
+      containers:
+      - name: ts-exporter
+        image: bucciarati.tail5b1a8.ts.net/ts-exporter
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 5000
