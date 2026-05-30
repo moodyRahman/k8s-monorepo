@@ -21,6 +21,7 @@ apiVersion: external-secrets.io/v1
 kind: SecretStore
 metadata:
   name: infisical
+  namespace: infisical
 spec:
   provider:
     infisical:
