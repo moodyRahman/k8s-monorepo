@@ -13,14 +13,14 @@ spec:
     name: infisical
 
   target:
-    name: ts-auth-keys
+    name: ts-keys
 
   data:
-    - secretKey: ts-auth
+    - secretKey: ts-access-key
       remoteRef:
         conversionStrategy: Default	
         decodingStrategy: None
-        key: ts-auth
+        key: ts-access-key
         metadataPolicy: None	
         nullBytePolicy: Ignore
     - secretKey: ts-net-id
@@ -51,12 +51,12 @@ spec:
           - name: TS_ACCESSKEY
             valueFrom: 
               secretKeyRef:
-                name: ts-auth-keys
-                key: ts-auth
+                name: ts-keys
+                key: ts-access-key
           - name: TS_NET
             valueFrom: 
               secretKeyRef:
-                name: ts-auth-keys
+                name: ts-keys
                 key: ts-net-id
         resources:
           limits:
