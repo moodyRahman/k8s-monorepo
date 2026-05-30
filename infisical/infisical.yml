@@ -18,7 +18,7 @@ spec:
       namespace: infisical
 ---
 apiVersion: external-secrets.io/v1
-kind: SecretStore
+kind: ClusterSecretStore
 metadata:
   name: infisical
   namespace: infisical
