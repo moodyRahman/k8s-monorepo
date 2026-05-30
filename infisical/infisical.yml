@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
       name: infisical
-      namespace: default
+      namespace: infisical
 ---
 apiVersion: external-secrets.io/v1
 kind: SecretStore
