@@ -11,6 +11,9 @@ spec:
       targetRevision: "*"
       helm:
         releaseName: eso
+        values: |
+          webhook:
+            enabled: false
     - repoURL: https://github.com/moodyRahman/k8s-monorepo
       path: ./infisical
       targetRevision: HEAD
@@ -26,4 +29,3 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
-      - Replace=true
