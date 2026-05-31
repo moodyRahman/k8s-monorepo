@@ -29,6 +29,11 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: traefik
+  tls:
+    - hosts:
+        - headlamp.k8s.moody
+      secretName: headlamp-tls
+
   rules:
     - host: headlamp.k8s.moody
       http:
