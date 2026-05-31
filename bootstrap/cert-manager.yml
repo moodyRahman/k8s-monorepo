@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://charts.jetstack.io
+      chart: cert-manager/cert-manager
+      targetRevision: "*"
+      helm:
+        releaseName: cert-manager
+
+    - repoURL: https://github.com/moodyRahman/k8s-monorepo
+      path: cert-manager
+      targetRevision: HEAD
+      directory:
+        recurse: true
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cert-manager
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
