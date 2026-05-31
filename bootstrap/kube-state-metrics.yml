@@ -5,14 +5,18 @@ metadata:
   namespace: argocd
 spec:
   project: default
+  sources:
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: kube-state-metrics
+      targetRevision: "*"
+      helm:
+        releaseName: kube-state-metrics
 
-  source:
-    repoURL: https://prometheus-community.github.io/helm-charts
-    chart: kube-state-metrics
-    targetRevision: "*"
-
-    helm:
-      releaseName: kube-state-metrics
+    - repoURL: https://github.com/moodyRahman/k8s-monorepo
+      path: kube-state-metrics
+      targetRevision: HEAD
+      directory:
+        recurse: true
 
   destination:
     server: https://kubernetes.default.svc
