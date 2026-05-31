@@ -23,6 +23,10 @@ kind: Ingress
 metadata:
   name: headlamp
   namespace: kube-system
+  annotations:
+    cert-manager.io/cluster-issuer: internal-ca
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: traefik
   rules:
