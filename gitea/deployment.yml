@@ -1,0 +1,20 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: pg_gitea
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: infisical
+
+  target:
+    name: pg-gitea
+
+  data:
+    - secretKey: password
+      remoteRef:
+        conversionStrategy: Default	
+        decodingStrategy: None
+        key: postgres-gitea-password
+        metadataPolicy: None	
+        nullBytePolicy: Ignore
