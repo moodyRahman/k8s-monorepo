@@ -84,6 +84,9 @@ spec:
             items:
               - key: password
                 path: pg-password
+        - name: gitea-data
+          persistentVolumeClaim:
+            claimName: gitea-data
 ---
 apiVersion: v1
 kind: Service
