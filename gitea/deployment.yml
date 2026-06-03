@@ -69,7 +69,7 @@ spec:
             mountPath: /etc/secrets
             readOnly: true
           - name: gitea-data
-            mountPath: /data
+            mountPath: /var/lib/gitea
         resources:
           limits:
             memory: "512Mi"
