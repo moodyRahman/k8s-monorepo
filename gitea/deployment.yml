@@ -80,11 +80,29 @@ spec:
     app: gitea
   ports:
     - name: http
-      port: 5000
-      targetPort: 5000
+      port: 3000
+      targetPort: 3000
       protocol: TCP
     - name: ssh
       port: 22
       targetPort: 22
       protocol: TCP
   type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gitea
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: git.k8s.moody
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gitea
+                port:
+                  number: 3000
