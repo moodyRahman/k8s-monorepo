@@ -8,10 +8,10 @@ spec:
   sources:
     - repoURL: https://dl.gitea.com/charts/
       chart: gitea
-      targetRevision: "*"
+      targetRevision: "12.6.0"
     - repoURL: https://github.com/moodyRahman/k8s-monorepo
       path: gitea
-      targetRevision: "*"
+      targetRevision: "HEAD"
       directory:
         recurse: true
   destination:
