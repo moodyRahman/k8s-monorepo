@@ -1,117 +1,12 @@
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: data
----
-apiVersion: apps/v1
-kind: Deployment
+kind: Service
 metadata:
   name: postgres
-  namespace: data
+  namespace: default
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: postgres
-  template:
-    metadata:
-      labels:
-        app: postgres
-    spec:
-      containers:
-        - name: postgres
-          image: postgres:18-trixie
-          env: 
-          - name: POSTGRES_PASSWORD
-            value: moody
-          - name: POSTGRES_DB
-            value: cluster
-          - name: POSTGRES_USER
-            value: moody
-          ports:
-            - containerPort: 5432
-          readinessProbe:
-            exec:
-              command:
-                - sh
-                - -c
-                - pg_isready
-            periodSeconds: 10
-            initialDelaySeconds: 5
-          resources:
-            requests:
-              memory: "256Mi"
-              cpu: "250m"
-            limits:
-              memory: "512Mi"
-              cpu: "500m"
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: grafana-service
-#   namespace: o11y
-# spec:
-#   selector:
-#     app: grafana
-#   ports:
-#     - protocol: TCP
-#       name: grafana
-#       port: 3000
-#       targetPort: 3000
-
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: grafana-ingress
-#   namespace: o11y
-# spec:
-#   ingressClassName: traefik
-#   rules:
-#     - host: grafana.k8s.moody
-#       http:
-#         paths:
-#           - path: /
-#             pathType: Prefix
-#             backend:
-#               service:
-#                 name: grafana-service
-#                 port:
-#                   name: grafana
-
-# ---
-# apiVersion: v1
-# kind: ConfigMap
-# metadata:
-#   name: grafana-config
-#   namespace: o11y
-# data:
-#   grafana.ini: |
-#     [date_formats]
-#     full_date = MMM Do, YYYY @ hh:mm:ss a
-#     interval_second = hh:mm:ss a
-#     interval_minute = hh:mm a
-#     interval_hour = MMM DD hh:mm a
-#     interval_day = MMM DD
-#     interval_month = YYYY-MM
-#     interval_year = YYYY
-
-#     [server]
-#     domain = grafana.k8s.moody
-#     ; root_url = %(protocol)s://%(domain)s:/grafana/
-#     serve_from_sub_path = true
-
-#     [smtp]
-#     enabled = true
-#     host = smtp.gmail.com:587
-#     user = moududur921@gmail.com
-#     password = ejge zzgi aivk jqda
-#     from_address = moududur921@gmail.com
-#     from_name = Grafana
-#     skip_verify = false
-#     startTLS_policy = OpportunisticStartTLS
-
-#     [database]
-#     type = postgres
-#     host = postgresql.data.svc.cluster.local
+  type: ExternalName
+  externalName: postgres.tail5b1a8.ts.net
+  ports:
+    - port: 5432
+      targetPort: 5432
+      protocol: TCP
