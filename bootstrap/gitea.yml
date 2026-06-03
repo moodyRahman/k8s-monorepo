@@ -11,6 +11,12 @@ spec:
     targetRevision: 2.2.0
     helm:
       releaseName: gitea
+      values: |
+        memcached:
+          image:
+            registry: docker.io
+            repository: bitnami/memcached
+            tag: latest
   destination:
     server: https://kubernetes.default.svc
     namespace: gitea
