@@ -12,7 +12,7 @@ spec:
       helm:
         values: |
           nfs:
-            server: nfs
+            server: database
             path: /srv/nfs/shared
           storageClass:
             defaultClass: true
