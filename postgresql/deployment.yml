@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   type: ExternalName
-  externalName: postgres.tail5b1a8.ts.net
+  externalName: database.tail5b1a8.ts.net
   ports:
     - port: 5432
       targetPort: 5432
