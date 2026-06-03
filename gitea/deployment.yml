@@ -42,6 +42,18 @@ spec:
     requests:
       storage: 2Gi
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitea-config
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: nfs-client
+  resources:
+    requests:
+      storage: 50Mi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -70,6 +82,8 @@ spec:
             readOnly: true
           - name: gitea-data
             mountPath: /var/lib/gitea
+          - name: gitea-config
+            mountPath: /etc/gitea
         resources:
           limits:
             memory: "512Mi"
@@ -87,6 +101,9 @@ spec:
         - name: gitea-data
           persistentVolumeClaim:
             claimName: gitea-data
+        - name: gitea-config
+          persistentVolumeClaim:
+            claimName: gitea-config
 ---
 apiVersion: v1
 kind: Service
