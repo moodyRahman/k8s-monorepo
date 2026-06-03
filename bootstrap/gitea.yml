@@ -5,15 +5,12 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  sources:
-    - repoURL: https://dl.gitea.com/charts/
-      chart: gitea
-      targetRevision: "2.2.0"
-    - repoURL: https://github.com/moodyRahman/k8s-monorepo
-      path: gitea
-      targetRevision: "HEAD"
-      directory:
-        recurse: true
+  source:
+    repoURL: https://dl.gitea.com/charts
+    chart: gitea
+    targetRevision: 2.2.0
+    helm:
+      releaseName: gitea
   destination:
     server: https://kubernetes.default.svc
     namespace: gitea
