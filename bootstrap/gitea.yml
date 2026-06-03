@@ -11,7 +11,7 @@ spec:
       targetRevision: "HEAD"
     - repoURL: https://github.com/moodyRahman/k8s-monorepo
       path: gitea
-      targetRevision: HEAD
+      targetRevision: "*"
       directory:
         recurse: true
   destination:
