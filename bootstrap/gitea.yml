@@ -8,7 +8,7 @@ spec:
   sources:
     - repoURL: https://dl.gitea.com/charts/
       chart: gitea
-      targetRevision: "HEAD"
+      targetRevision: "*"
     - repoURL: https://github.com/moodyRahman/k8s-monorepo
       path: gitea
       targetRevision: "*"
