@@ -4,7 +4,7 @@ metadata:
   name: headlamp
   namespace: argocd
 spec:
-  project: default
+  project: bootstrap
   sources:
     - repoURL: https://github.com/moodyRahman/k8s-monorepo
       path: headlamp
