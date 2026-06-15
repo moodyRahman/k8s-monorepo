@@ -4,7 +4,7 @@ metadata:
   name: ts-exporter
   namespace: argocd
 spec:
-  project: default
+  project: apps
   sources:
     - repoURL: https://github.com/moodyRahman/k8s-monorepo
       path: ./ts-exporter
