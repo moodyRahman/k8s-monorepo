@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ts-exporter
+spec:
+  selector:
+    matchLabels:
+      app: "ts-exporter"
+  template:
+    metadata:
+      labels:
+        app: ts-exporter
+    spec:
+      replicas: 2
+      containers:
+        - 

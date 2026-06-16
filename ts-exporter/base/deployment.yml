@@ -11,6 +11,7 @@ spec:
       labels:
         app: ts-exporter
     spec:
+      replicas: 1
       containers:
       - name: ts-exporter
         image: bucciarati.tail5b1a8.ts.net/ts-exporter:main
