@@ -1,23 +1,39 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: ts-exporter
   namespace: argocd
 spec:
-  project: apps
-  sources:
-    - repoURL: https://github.com/moodyRahman/k8s-monorepo
-      path: ./ts-exporter
-      targetRevision: HEAD
-      directory:
-        recurse: true
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: ts-exporter
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - namespace: ts-exporter-dev
+        secret:  infisical-dev
+        path: ./ts-exporter/overlays/dev/
+      - namespace: ts-exporter-prod
+        secret: infisical-prod
+        path: ./ts-exporter/overlays/prod/
+
+
+  template:
+    metadata:
+      name: '{{.namespace}}'
+      namespace: argocd
+    spec:
+      project: apps
+      source:
+        repoURL: https://github.com/moodyRahman/k8s-monorepo
+        targetRevision: HEAD
+        path: '{{.path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{.namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions: 
+          - CreateNamespace=true
+          - ServerSideApply=true
