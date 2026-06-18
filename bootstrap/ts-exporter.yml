@@ -10,10 +10,8 @@ spec:
   - list:
       elements:
       - namespace: ts-exporter-dev
-        secret:  infisical-dev
         path: ./ts-exporter/overlays/dev/
       - namespace: ts-exporter-prod
-        secret: infisical-prod
         path: ./ts-exporter/overlays/prod/
 
 
