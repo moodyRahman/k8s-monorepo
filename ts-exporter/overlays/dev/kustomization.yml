@@ -5,3 +5,4 @@ resources:
 patches:
 - path: deployment.yml
 - path: external-secret.yml
+- path: ingress.yml
