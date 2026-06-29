@@ -4,10 +4,16 @@ metadata:
   name: argocd
   namespace: argocd
   annotations:
+    cert-manager.io/cluster-issuer: issuer-infisical
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: traefik
+  tls:
+    - hosts:
+        - argocd.k8s.moody
+      secretName: argocd-tls
+
   rules:
     - host: argocd.k8s.moody
       http:
