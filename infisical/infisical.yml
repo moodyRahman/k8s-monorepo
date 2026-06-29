@@ -76,26 +76,3 @@ spec:
       secretsScope:
         projectSlug: cluster
         environmentSlug: prod
----
-apiVersion: external-secrets.io/v1
-kind: ClusterSecretStore
-metadata:
-  name: infisical-ca
-  namespace: infisical
-spec:
-  provider:
-    infisical:
-      hostAPI: https://diavolo.tail5b1a8.ts.net
-      auth:
-        universalAuthCredentials:
-          clientId:
-            name: infisical-ca
-            key: client_id
-            namespace: infisical
-          clientSecret:
-            name: infisical-ca
-            key: client_secret
-            namespace: infisical
-      secretsScope:
-        projectSlug: cluster-certs
-        environmentSlug: prod
