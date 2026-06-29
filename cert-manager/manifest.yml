@@ -1,30 +1,40 @@
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
 metadata:
-  name: selfsigned-bootstrap
-spec:
-  selfSigned: {}
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: internal-ca
+  name: acme-eab-secret
   namespace: cert-manager
 spec:
-  isCA: true
-  commonName: k8s.moody Internal CA
-  secretName: internal-ca-secret
-  privateKey:
-    algorithm: ECDSA
-    size: 256
-  issuerRef:
-    name: selfsigned-bootstrap
-    kind: ClusterIssuer
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: infisical-prod
+  target:
+    name: acme-eab
+  data:
+    - secretKey: eab-secret
+      remoteRef:
+        conversionStrategy: Default
+        decodingStrategy: None
+        key: acme_eab_secret
+        metadataPolicy: None
+        nullBytePolicy: Ignore
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: internal-ca
+  name: issuer-infisical
 spec:
-  ca:
-    secretName: internal-ca-secret
+  acme:
+    server: https://diavolo.tail5b1a8.ts.net/api/v1/cert-manager/acme/applications/1a132e22-f675-4a41-9d3c-b62ac264cb27/profiles/a481169d-3403-4cb6-8ddf-20a186c39ebc/directory
+    email: test@moodyrahman.com
+    enableDurationFeature: true
+    externalAccountBinding:
+      keyID: aa5966b2-db2b-439e-abac-2fdc548d66ff
+      keySecretRef:
+        name: acme-eab
+        key: eab-secret
+    privateKeySecretRef:
+      name: issuer-account-key
+    solvers:
+    - http01:
+        ingress:
+          className: traefik
