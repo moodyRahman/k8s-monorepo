@@ -22,7 +22,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: headlamp-persistent-token
-  namespace: headlamp-admin
+  namespace: kube-system
   annotations:
     kubernetes.io/service-account.name: headlamp-admin
 type: kubernetes.io/service-account-token
