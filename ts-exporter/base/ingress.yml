@@ -2,10 +2,19 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ts-exporter
+  annotations:
+    cert-manager.io/cluster-issuer: issuer-infisical
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: traefik
+  tls:
+    - hosts:
+        - ts-exporter-null.k8s.moody
+      secretName: headlamp-tls
+
   rules:
-    - host: ts-exporter.k8s.moody
+    - host: ts-exporter-null.k8s.moody
       http:
         paths:
           - path: /
