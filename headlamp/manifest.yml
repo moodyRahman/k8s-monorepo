@@ -34,8 +34,6 @@ metadata:
   namespace: kube-system
   annotations:
     cert-manager.io/cluster-issuer: issuer-infisical
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   ingressClassName: traefik
   tls:
