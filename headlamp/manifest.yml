@@ -38,11 +38,11 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - headlamp.moody
+        - headlamp.moody.lab
       secretName: headlamp-tls
 
   rules:
-    - host: headlamp.moody
+    - host: headlamp.moody.lab
       http:
         paths:
           - path: /
