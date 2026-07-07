@@ -11,11 +11,11 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - argocd.k8s.moody
+        - argocd.moody
       secretName: argocd-tls
 
   rules:
-    - host: argocd.k8s.moody
+    - host: argocd.moody
       http:
         paths:
           - path: /

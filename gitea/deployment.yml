@@ -135,11 +135,11 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - git.k8s.moody
+        - git.moody
       secretName: git-tls
 
   rules:
-    - host: git.k8s.moody
+    - host: git.moody
       http:
         paths:
           - path: /

@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: k8s-exporter.k8s.moody
+    - host: k8s-exporter.moody
       http:
         paths:
           - path: /

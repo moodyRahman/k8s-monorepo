@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - ts-exporter-dev.k8s.moody
+        - ts-exporter-dev.moody
       secretName: ts-exporter-dev
   rules:
-    - host: ts-exporter-dev.k8s.moody
+    - host: ts-exporter-dev.moody
       http:
         paths:
           - path: /
