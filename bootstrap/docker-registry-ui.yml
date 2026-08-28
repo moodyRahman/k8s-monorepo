@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/moodyRahman/k8s-monorepo
     path: docker-registry-ui
-    targetRevision: HEAD
+    targetRevision: dev
     directory:
       recurse: true
 
