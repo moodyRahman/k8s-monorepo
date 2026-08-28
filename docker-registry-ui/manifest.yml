@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-registry
+  labels:
+    name: docker-registry
+spec:
+  selector:
+    matchLabels:
+      name: docker-registry
+  template:
+    metadata:
+      labels:
+        name: docker-registry
+    spec:
+      containers:
+      - image: quiq/registry-ui:0.12.0
+        name: docker-registry
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "55M"
+          limits:
+            cpu: "100m"
+            memory: "128M"
+        ports:
+        - containerPort: 8000
+          name: web-ui

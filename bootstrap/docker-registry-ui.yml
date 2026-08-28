@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: docker-ui
+  namespace: argocd
+spec:
+  project: bootstrap
+  source:
+    repoURL: https://github.com/moodyRahman/k8s-monorepo
+    path: docker-registry-ui
+    targetRevision: HEAD
+    directory:
+      recurse: true
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: docker-registry-ui
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
