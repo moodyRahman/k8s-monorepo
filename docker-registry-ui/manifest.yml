@@ -27,8 +27,11 @@ spec:
         ports:
         - containerPort: 8000
           name: web-ui
-      volumeMounts:
-        # This will mount the files into /etc/config/
-        - mountPath: /opt/
+        volumeMounts:
+          - mountPath: /opt/
+            name: docker-ui-config
+            readOnly: true
+      volumes:
+      - name: docker-ui-config
+        configMap:
           name: docker-ui-config
-          readOnly: true
