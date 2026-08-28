@@ -19,6 +19,9 @@ spec:
         command: ["sh"]
         args: ["-c", "sleep infinity"]
         # imagePullPolicy: Always
+        env:
+          - name: REGISTRY_HOSTNAME
+            value: "bucciarati.tail5b1a8.ts.net"
         resources:
           requests:
             cpu: "20m"
