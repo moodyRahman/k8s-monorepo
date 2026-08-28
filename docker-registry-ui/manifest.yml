@@ -16,8 +16,8 @@ spec:
       containers:
       - image: quiq/registry-ui:0.12.0
         name: docker-registry
-        command: ["sh"]
-        args: ["-c", "sleep infinity"]
+        # command: ["sh"]
+        # args: ["-c", "sleep infinity"]
         # imagePullPolicy: Always
         env:
           - name: REGISTRY_HOSTNAME
