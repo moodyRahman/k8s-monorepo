@@ -28,9 +28,10 @@ spec:
         - containerPort: 8000
           name: web-ui
         volumeMounts:
-          - mountPath: /opt/
-            name: docker-ui-config
-            readOnly: true
+        - mountPath: /opt/config.yml
+          subPath: config.yml
+          name: docker-ui-config
+          readOnly: true
       volumes:
       - name: docker-ui-config
         configMap:
