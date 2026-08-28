@@ -29,10 +29,10 @@ spec:
         ports:
         - containerPort: 8000
           name: web-ui
-        volumeMounts:
-        - mountPath: /opt/config.yml
-          subPath: config.yml
-          name: docker-ui-config
+        # volumeMounts:
+        # - mountPath: /opt/config.yml
+        #   subPath: config.yml
+        #   name: docker-ui-config
       volumes:
       - name: docker-ui-config
         configMap:
