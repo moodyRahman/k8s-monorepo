@@ -9,5 +9,5 @@ spec:
   ports:
     - port: 80          # Port inside the cluster
       targetPort: 8000  # Port inside the container
-      nodePort: 8000   # External port (optional)
+      nodePort: 31000   # External port (optional)
       protocol: TCP
