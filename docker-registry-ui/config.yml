@@ -1,9 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: game-demo
+  name: docker-ui-config
 data:
   config.yml: |
+
     # Listen interface.
     listen_addr: 0.0.0.0:8000
 
@@ -34,7 +35,7 @@ data:
     # Registry endpoint and authentication.
     registry:
       # Registry hostname (without protocol but may include port).
-      hostname: docker-registry.local
+      hostname: bucciarati.tail5b1a8.ts.net
       # Allow to access non-https enabled registry.
       insecure: false
 
@@ -42,10 +43,8 @@ data:
       # They need to have a full access to the registry.
       # If token authentication service is enabled, it will be auto-discovered and those credentials
       # will be used to obtain access tokens.
-      username: user
-      password: pass
-      # Set password to '' in order to read it from the file below. Otherwise, it is ignored.
-      password_file: /run/secrets/registry_password_file
+      username: null
+      password: ""
 
       # Alternatively, you can do auth with Keychain, useful for local development.
       # When enabled the above credentials will not be used.
@@ -62,22 +61,6 @@ data:
       # because registry UI itself does not employ any auth.
       admins: []
 
-    # Event listener configuration.
-    event_listener:
-      # The same token should be configured on Docker registry as Authorization Bearer token.
-      bearer_token: xxx
-      # Retention of records to keep.
-      retention_days: 7
-
-      # Event listener storage.
-      database_driver: sqlite3
-      database_location: data/registry_events.db
-      # database_driver: mysql
-      # database_location: user:password@tcp(localhost:3306)/docker_events
-
-      # You can disable event deletion on some hosts when you are running registry UI on MySQL master-master or
-      # cluster setup to avoid deadlocks or replication breaks.
-      deletion_enabled: true
 
     # Options for tag purging.
     purge_tags:
@@ -93,8 +76,3 @@ data:
       # File format is JSON: {"repo1": ["tag1", "tag2"], "repoX": ["tagX"]}
       # Empty string disables this feature.
       keep_from_file: ''
-
-    # Debug mode.
-    debug:
-      # Affects only templates.
-      templates: false

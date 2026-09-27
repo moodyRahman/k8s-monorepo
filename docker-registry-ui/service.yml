@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: docker-registry
+spec:
+  type: ClusterIP
+  selector:
+    name: docker-registry
+  ports:
+    - port: 80
+      targetPort: 8000
+      protocol: TCP
