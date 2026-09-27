@@ -9,7 +9,7 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - headlamp.moody
+        - longhorn.moody
       secretName: longhorn-tls
 
   rules:
