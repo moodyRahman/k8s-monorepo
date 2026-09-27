@@ -16,6 +16,11 @@ spec:
         values: |
           preUpgradeChecker:
             jobEnabled: false
+    - repoURL: https://github.com/moodyRahman/k8s-monorepo
+      path: ./longhorn
+      targetRevision: HEAD
+      directory:
+        recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
