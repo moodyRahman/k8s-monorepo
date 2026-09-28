@@ -14,8 +14,8 @@ spec:
           nfs:
             server: database
             path: /srv/nfs/shared
-          storageClass:
-            defaultClass: true
+          # storageClass:
+          #   defaultClass: true
     # - repoURL: https://github.com/moodyRahman/k8s-monorepo
     #   path: nfs-subdir
     #   targetRevision: HEAD
