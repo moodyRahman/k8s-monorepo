@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arrivals-api
+  labels:
+    name: arrivals-api
+spec:
+  selector:
+    matchLabels:
+      name: arrivals-api
+  template:
+    metadata:
+      labels:
+        name: arrivals-api
+    spec:
+      containers:
+      - image: bucciarati.tail5b1a8.ts.net/arrivals-api:latest
+        name: arrival-api
+        # command: ["sh"]
+        # args: ["-c", "sleep infinity"]
+        # imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "55M"
+          limits:
+            cpu: "100m"
+            memory: "128M"
+        ports:
+        - containerPort: 3000
+          name: web-ui

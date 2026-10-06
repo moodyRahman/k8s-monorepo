@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arrivals
+  namespace: argocd
+spec:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+  project: apps
+  sources:
+    - repoURL: https://github.com/moodyRahman/k8s-monorepo
+      path: ./arrivals_api
+      targetRevision: HEAD
+      directory:
+        recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: arrivals-api
