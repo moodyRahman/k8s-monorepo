@@ -18,12 +18,12 @@ data:
 
       # Catalog (repo list) refresh interval in minutes.
       # If set to 0 it will never refresh but will run once initially.
-      catalog_refresh_interval: 60
+      catalog_refresh_interval: 1
 
       # Tags refresh interval in minutes (background job that caches all tags).
       # If set to 0, background refresh is disabled and tags will always be
       # refreshed online when browsing (ignoring tags_online_refresh_max_count).
-      tags_async_refresh_interval: 360
+      tags_async_refresh_interval: 0
 
       # Max tags per repo to allow refreshing tags online when browsing.
       # If repo has fewer tags than this limit, tags will be fetched fresh on page load.
