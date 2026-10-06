@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: arrivals
+  annotations:
+    cert-manager.io/cluster-issuer: issuer-infisical
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - arrivals.moody
+      secretName: arrivals-tls
+
+  rules:
+    - host: arrivals.moody
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: arrivals
+                port:
+                  number: 3000
