@@ -11,7 +11,7 @@ spec:
   sources:
     - repoURL: https://github.com/moodyRahman/k8s-monorepo
       path: ./arrivals_api
-      targetRevision: HEAD
+      targetRevision: arrivals-dev
       directory:
         recurse: true
   destination:
