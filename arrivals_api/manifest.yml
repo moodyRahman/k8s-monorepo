@@ -14,7 +14,7 @@ spec:
         name: arrivals-api
     spec:
       containers:
-      - image: bucciarati.tail5b1a8.ts.net/arrivals-api:1.3
+      - image: bucciarati.tail5b1a8.ts.net/arrivals-api:1.4
         name: arrival-api
         # command: ["sh"]
         # args: ["-c", "sleep infinity"]
