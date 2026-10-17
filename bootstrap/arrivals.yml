@@ -1,19 +1,34 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: arrivals
   namespace: argocd
 spec:
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-  project: apps
-  sources:
-    - repoURL: https://github.com/moodyRahman/k8s-monorepo
-      path: ./arrivals_api
-      targetRevision: arrivals-dev
-      directory:
-        recurse: true
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: arrivals-api
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - name: arrivals
+        namespace: arrivals-api
+        path: ./arrivals_api/overlays/prod
+      - name: arrivals-dev
+        namespace: arrivals-api-dev
+        path: ./arrivals_api/overlays/dev
+
+  template:
+    metadata:
+      name: '{{.name}}'
+      namespace: argocd
+    spec:
+      project: apps
+      source:
+        repoURL: https://github.com/moodyRahman/k8s-monorepo
+        targetRevision: arrivals-dev
+        path: '{{.path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{.namespace}}'
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true

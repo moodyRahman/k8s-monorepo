@@ -1,0 +1,11 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: arrivals
+spec:
+  tls:
+    - hosts:
+        - dev-arrivals.moody
+      secretName: arrivals-dev-tls
+  rules:
+    - host: dev-arrivals.moody

@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+images:
+- name: bucciarati.tail5b1a8.ts.net/arrivals-api
+  newTag: 221c60d
