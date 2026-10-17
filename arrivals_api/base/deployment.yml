@@ -15,6 +15,9 @@ spec:
       labels:
         name: arrivals-api
     spec:
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
       containers:
       - image: bucciarati.tail5b1a8.ts.net/arrivals-api:221c60d
         name: arrival-api
