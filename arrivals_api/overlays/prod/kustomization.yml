@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: bucciarati.tail5b1a8.ts.net/arrivals-api
-  newTag: 03266fb
+  newTag: fca7891
