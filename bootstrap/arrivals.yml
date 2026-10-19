@@ -24,7 +24,7 @@ spec:
       project: apps
       source:
         repoURL: https://github.com/moodyRahman/k8s-monorepo
-        targetRevision: arrivals-dev
+        targetRevision: HEAD
         path: '{{.path}}'
       destination:
         server: https://kubernetes.default.svc
