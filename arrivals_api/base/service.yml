@@ -10,4 +10,8 @@ spec:
       port: 3000
       targetPort: 3000
       protocol: TCP
+    - name: out
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
   type: ClusterIP

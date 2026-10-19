@@ -5,6 +5,8 @@ metadata:
   labels:
     name: arrivals-api
 spec:
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       name: arrivals-api
@@ -13,6 +15,9 @@ spec:
       labels:
         name: arrivals-api
     spec:
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
       containers:
       - image: bucciarati.tail5b1a8.ts.net/arrivals-api:221c60d
         name: arrival-api
@@ -29,3 +34,31 @@ spec:
         ports:
         - containerPort: 3000
           name: web-ui
+        volumeMounts:
+        - name: out
+          mountPath: /usr/share/out
+      - name: out-server
+        image: python:3.13-alpine
+        command: ["python", "-m", "http.server", "8080", "--directory", "/usr/share/out"]
+        securityContext:
+          runAsUser: 1000
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
+        resources:
+          requests:
+            cpu: "5m"
+            memory: "16M"
+          limits:
+            cpu: "50m"
+            memory: "48M"
+        ports:
+        - containerPort: 8080
+          name: out-http
+        volumeMounts:
+        - name: out
+          mountPath: /usr/share/out
+          readOnly: true
+      volumes:
+      - name: out
+        persistentVolumeClaim:
+          claimName: arrivals-out

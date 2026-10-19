@@ -9,3 +9,12 @@ spec:
       secretName: arrivals-dev-tls
   rules:
     - host: dev-arrivals.moody
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: arrivals
+                port:
+                  number: 3000

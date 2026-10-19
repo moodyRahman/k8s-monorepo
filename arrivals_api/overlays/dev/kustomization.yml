@@ -4,6 +4,6 @@ resources:
 - ../../base
 images:
 - name: bucciarati.tail5b1a8.ts.net/arrivals-api
-  newTag: dev
+  newTag: fca7891
 patches:
 - path: ingress.yml
